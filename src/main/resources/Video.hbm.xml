@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.spring.oa.domain.Video" table="video" schema="" catalog="dbjdbc">
+        <id name="id" column="id"/>
+        <property name="channelId" column="channel_id" insert="false" update="false"/>
+        <property name="userId" column="user_id" insert="false" update="false"/>
+        <property name="clientFileName" column="Client_file_name"/>
+        <property name="serverFileName" column="server_file_name"/>
+        <property name="pcFileName" column="pc_file_name"/>
+        <property name="title" column="title"/>
+        <property name="tags" column="tags"/>
+        <property name="description" column="description"/>
+        <property name="playCount" column="play_count"/>
+        <property name="commentCount" column="comment_count"/>
+        <property name="goodCommentCount" column="good_comment_count"/>
+        <property name="badCommentCount" column="bad_comment_count"/>
+        <property name="duration" column="duration"/>
+        <property name="uploadTime" column="upload_time"/>
+        <property name="status" column="status"/>
+        <many-to-one name="channelByChannelId" class="com.spring.oa.domain.Channel">
+            <column name="channel_id"/>
+        </many-to-one>
+        <many-to-one name="userByUserId" class="com.spring.oa.domain.User">
+            <column name="user_id"/>
+        </many-to-one>
+        <set name="commentsById" inverse="true">
+            <key>
+                <column name="Video_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Comment"/>
+        </set>
+    </class>
+</hibernate-mapping>

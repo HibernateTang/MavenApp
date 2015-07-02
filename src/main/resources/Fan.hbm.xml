@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.spring.oa.domain.Fan" table="fan" schema="" catalog="dbjdbc">
+        <id name="id" column="id"/>
+        <property name="listenerId" column="listener_id" insert="false" update="false"/>
+        <property name="hostId" column="host_id" insert="false" update="false"/>
+        <many-to-one name="userByListenerId" class="com.spring.oa.domain.User">
+            <column name="listener_id"/>
+        </many-to-one>
+        <many-to-one name="userByHostId" class="com.spring.oa.domain.User">
+            <column name="host_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

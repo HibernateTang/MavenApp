@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - dbjdbc@localhost" uuid="a82d0ef2-1cc4-4bae-922d-8fd5d7a89946">
+    <database-info product="MySQL" version="5.6.23-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="dbjdbc"/>
+    <table name="articles" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="article_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="title" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="category_id" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="member_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="article_id"/>
+      <foreign-key name="articles_ibfk_1" columns="category_id" ref-table="categories" ref-schema="" ref-catalog="dbjdbc" ref-columns="category_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_member" columns="member_id" ref-table="members" ref-schema="" ref-catalog="dbjdbc" ref-columns="member_id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_member" unique="false" columns="member_id"/>
+    </table>
+    <table name="categories" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="category_id" sqlType="TINYINT UNSIGNED" precision="3" scale="0" nullable="false" jdbcType="-6" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="category_id"/>
+      <exported-key name="articles_ibfk_1" table="articles" schema="" catalog="dbjdbc" columns="category_id"/>
+    </table>
+    <table name="channel" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="video_ibfk_1" table="video" schema="" catalog="dbjdbc" columns="channel_id"/>
+    </table>
+    <table name="comment" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="User_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Video_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="content" sqlType="VARCHAR" precision="140" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="comment_ibfk_1" columns="User_id" ref-table="user" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="comment_ibfk_2" columns="Video_id" ref-table="video" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="config" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <column name="value" sqlType="VARCHAR" precision="40" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="department" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_lk0a412kck2kdc6slousi528s" table="employee" schema="" catalog="dbjdbc" columns="department_id"/>
+    </table>
+    <table name="employee" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="department_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_lk0a412kck2kdc6slousi528s" columns="department_id" ref-table="department" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_lk0a412kck2kdc6slousi528s" unique="false" columns="department_id"/>
+    </table>
+    <table name="face" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pic_file_name" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="user_ibfk_1" table="user" schema="" catalog="dbjdbc" columns="face_pic_id"/>
+    </table>
+    <table name="fan" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="listener_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="host_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fan_ibfk_1" columns="listener_id" ref-table="user" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fan_ibfk_2" columns="host_id" ref-table="user" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="members" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="member_id" sqlType="INT UNSIGNED" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="member_id"/>
+      <exported-key name="fk_member" table="articles" schema="" catalog="dbjdbc" columns="member_id"/>
+    </table>
+    <table name="message" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sender_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="receiver_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="content" sqlType="VARCHAR" precision="140" scale="0" nullable="true" jdbcType="12"/>
+      <column name="Time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="message_ibfk_1" columns="sender_id" ref-table="user" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="message_ibfk_2" columns="receiver_id" ref-table="user" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+    </table>
+    <table name="players" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="playerno" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="birth_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="sex" sqlType="CHAR" precision="1" scale="0" nullable="false" jdbcType="1"/>
+      <column name="joined" sqlType="SMALLINT" precision="5" scale="0" nullable="false" jdbcType="5"/>
+    </table>
+    <table name="s_user" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="NAME" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="student" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="age" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="tb_user" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pwd" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="user" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="face_pic_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="last_login_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="visit_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="total_play_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="user_ibfk_1" columns="face_pic_id" ref-table="face" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="comment_ibfk_1" table="comment" schema="" catalog="dbjdbc" columns="User_id"/>
+      <exported-key name="fan_ibfk_1" table="fan" schema="" catalog="dbjdbc" columns="listener_id"/>
+      <exported-key name="fan_ibfk_2" table="fan" schema="" catalog="dbjdbc" columns="host_id"/>
+      <exported-key name="message_ibfk_1" table="message" schema="" catalog="dbjdbc" columns="sender_id"/>
+      <exported-key name="message_ibfk_2" table="message" schema="" catalog="dbjdbc" columns="receiver_id"/>
+      <exported-key name="video_ibfk_2" table="video" schema="" catalog="dbjdbc" columns="user_id"/>
+    </table>
+    <table name="video" schema="" catalog="dbjdbc" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="channel_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="Client_file_name" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="server_file_name" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pc_file_name" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="title" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="tags" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="description" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="play_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="comment_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="good_comment_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="bad_comment_count" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="duration" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="upload_time" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="status" sqlType="CHAR" precision="1" scale="0" nullable="true" jdbcType="1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="video_ibfk_1" columns="channel_id" ref-table="channel" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="video_ibfk_2" columns="user_id" ref-table="user" ref-schema="" ref-catalog="dbjdbc" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="comment_ibfk_2" table="comment" schema="" catalog="dbjdbc" columns="Video_id"/>
+    </table>
+  </data-source>
+</component>

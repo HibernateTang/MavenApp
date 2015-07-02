@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQL5Dialect
+        </property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/dbjdbc</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <mapping resource="Channel.hbm.xml"/>
+        <mapping class="com.spring.oa.domain.Channel"/>
+
+        <mapping resource="Comment.hbm.xml"/>
+        <mapping class="com.spring.oa.domain.Comment"/>
+
+        <mapping resource="Config.hbm.xml"/>
+        <mapping class="com.spring.oa.domain.Config"/>
+
+        <mapping class="com.spring.oa.domain.Face"/>
+        <mapping resource="Face.hbm.xml"/>
+
+        <mapping class="com.spring.oa.domain.Fan"/>
+        <mapping resource="Fan.hbm.xml"/>
+
+        <mapping class="com.spring.oa.domain.Message"/>
+        <mapping resource="Message.hbm.xml"/>
+
+        <mapping class="com.spring.oa.domain.User"/>
+        <mapping resource="User.hbm.xml"/>
+
+        <mapping class="com.spring.oa.domain.Video"/>
+        <mapping resource="Video.hbm.xml"/>
+
+        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+        <!--<property name="hibernate.show_sql">true</property>-->
+        <!--<property name="hibernate.format_sql">true</property>-->
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/dbjdbc</property>-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<mapping class="com.spring.oa.domain.Face"/>-->
+        <!--&lt;!&ndash;配置二级缓存&ndash;&gt;-->
+        <!--<property name="hibernate.cache.region.factory_class">-->
+            <!--org.hibernate.cache.ehcache.EhCacheRegion-->
+        <!--</property>-->
+        <!--&lt;!&ndash;启用查询缓存&ndash;&gt;-->
+        <!--<property name="hibernate.cache.use_query_cache">true</property>-->
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/dbjdbc</property>-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<mapping resource="com/spring/oa/domain/User.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.User"/>-->
+        <!--&lt;!&ndash;映射文件&ndash;&gt;-->
+        <!--<mapping resource="com/spring/oa/domain/Channel.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Channel"/>-->
+        <!--<mapping resource="com/spring/oa/domain/Comment.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Comment"/>-->
+        <!--<mapping resource="com/spring/oa/domain/Config.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Config"/>-->
+        <!--<mapping resource="com/spring/oa/domain/Face.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Face"/>-->
+        <!--<mapping resource="com/spring/oa/domain/Fan.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Fan"/>-->
+        <!--<mapping resource="com/spring/oa/domain/Message.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Message"/>-->
+        <!--<mapping resource="com/spring/oa/domain/User.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.User"/>-->
+        <!--<mapping resource="com/spring/oa/domain/Video.hbm.xml"/>-->
+        <!--<mapping class="com.spring.oa.domain.Video"/>-->
+        <!--配置二级缓存-->
+        <!--<class-cache class="com.spring.oa.domain.Channel" usage="read-write"/>-->
+        <!--<class-cache class="com.spring.oa.domain.Face" usage="read-write"/>-->
+        <!--<class-cache class="com.spring.oa.domain.Config" usage="read-write"/>-->
+    </session-factory>
+</hibernate-configuration>

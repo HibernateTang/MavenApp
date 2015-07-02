@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.spring.oa.domain.User" table="user" schema="" catalog="dbjdbc">
+        <id name="id" column="id"/>
+        <property name="name" column="name"/>
+        <property name="password" column="password"/>
+        <property name="facePicId" column="face_pic_id" insert="false" update="false"/>
+        <property name="lastLoginTime" column="last_login_time"/>
+        <property name="visitCount" column="visit_count"/>
+        <property name="totalPlayCount" column="total_play_count"/>
+        <many-to-one name="faceByFacePicId" class="com.spring.oa.domain.Face">
+            <column name="face_pic_id"/>
+        </many-to-one>
+        <set name="commentsById" inverse="true">
+            <key>
+                <column name="User_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Comment"/>
+        </set>
+        <set name="fansById" inverse="true">
+            <key>
+                <column name="listener_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Fan"/>
+        </set>
+        <set name="fansById_0" inverse="true">
+            <key>
+                <column name="host_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Fan"/>
+        </set>
+        <set name="messagesById" inverse="true">
+            <key>
+                <column name="sender_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Message"/>
+        </set>
+        <set name="messagesById_0" inverse="true">
+            <key>
+                <column name="receiver_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Message"/>
+        </set>
+        <set name="videosById" inverse="true">
+            <key>
+                <column name="user_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.spring.oa.domain.Video"/>
+        </set>
+    </class>
+</hibernate-mapping>

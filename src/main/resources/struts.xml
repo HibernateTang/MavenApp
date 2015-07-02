@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+        <!--使用Spring的对象工厂（Spring 整合strust2）-->
+        <constant name="struts.objectFactory" value="spring"/>
+        <!--请求后缀名-->
+        <constant name="struts.action.extension" value="do"/>
+        <!--配置主题为简单主题-->
+        <constant name="struts.ui.theme" value="simple"/>
+        <!--配置struts的开发模式-->
+        <constant name="struts.devMode" value="true"/>
+        <!--允许struts标签访问静态方法-->
+        <constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+        <!--配置上传文件的最大大小-->
+        <constant name="struts.multipart.maxSize" value="1073741824"/>
+        <!--oa对应的包-->
+        <package name="oa" namespace="/" extends="struts-default">
+                <default-action-ref name="PageNotFound"/>
+                <global-results>
+                        <result name="404">WEB-INF/404.jsp</result>
+                        <result name="error">WEB-INF/pages/error.jsp</result>
+                        <!--<result type="chain" name="back_to_main">404.jsp</result>-->
+                </global-results>
+                <global-exception-mappings>
+                        <exception-mapping exception="java.lang.NoSuchMethodException" result="404"/>
+                        <exception-mapping exception="java.lang.Exception" result="error"/>
+                </global-exception-mappings>
+                <action name="PageNotFound">
+                        <result>WEB-INF/404.jsp</result>
+                </action>
+                <action name="verification_code" class="com.spring.oa.action.VerificationCodeAction">
+                        <result name="init">WEB-INF/pages/verification_code.jsp</result>
+                </action>
+                <action name="register_*" class="com.spring.oa.action.RegisterAction" method="{1}">
+                        <result name="register">WEB-INF/pages/register.jsp</result>
+                </action>
+                <action name="login_*" class="com.spring.oa.action.LoginAction" method="{1}">
+                        <result name="login">WEB-INF/pages/login.jsp</result>
+                </action>
+                <action name="main" class="com.spring.oa.action.MainAction">
+                        <result name="main">WEB-INF/pages/main.jsp</result>
+                </action>
+                <action name="upload_*" class="com.spring.oa.action.UploadAction">
+                        <result name="upload">WEB-INF/pages/upload.jsp</result>
+                </action>
+                <action name="player_*.do" class="com.spring.oa.action.PlayerAction">
+                        <result name="player">WEB-INF/pages/player.jsp</result>
+                </action>
+                <action name="main.do" class="com.spring.oa.action.MainAction">
+                        <result name="main">WEB-INF/pages/main.jsp</result>
+                </action>
+                <action name="player_*" class="com.spring.oa.action.PlayerAction" method="{1}">
+                        <result name="player">WEB-INF/pages/player.jsp</result>
+                        <result name="player_error">WEB-INF/pages/player_error.jsp</result>
+                </action>
+        </package>
+
+</struts>

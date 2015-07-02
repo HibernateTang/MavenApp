@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.spring.oa.domain.Message" table="message" schema="" catalog="dbjdbc">
+        <id name="id" column="id"/>
+        <property name="senderId" column="sender_id" insert="false" update="false"/>
+        <property name="receiverId" column="receiver_id" insert="false" update="false"/>
+        <property name="content" column="content"/>
+        <property name="time" column="Time"/>
+        <many-to-one name="userBySenderId" class="com.spring.oa.domain.User">
+            <column name="sender_id"/>
+        </many-to-one>
+        <many-to-one name="userByReceiverId" class="com.spring.oa.domain.User">
+            <column name="receiver_id"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
